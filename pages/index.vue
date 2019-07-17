@@ -422,14 +422,7 @@
         ],
 
 
-        headers: [
-          {
-            text: 'Language/Technology/Framework',
-            align: 'left',
-            sortable: false,
-            value: 'name'
-          },
-        ],
+        
         technicalskills: [
           {
             technology: 'Nuxt.js',
