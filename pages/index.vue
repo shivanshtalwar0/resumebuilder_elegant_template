@@ -2,7 +2,7 @@
   <div class="bg">
     <v-layout row wrap>
       <v-flex xs4>
-        <v-card width="auto" height="auto" style="height:100vh;background-color:#F5F5F5;">
+        <v-card width="auto" height="auto" style="height:100%;background-color:#F5F5F5;">
           <v-layout row wrap width="auto" height="10em" class="" style="background-color: #ffffff;">
             <v-flex pt-2 xs12 text-xs-center>
               <v-avatar
@@ -18,7 +18,8 @@
               <h2 class="black--text">{{myname}}</h2>
             </v-flex>
             <v-flex text-xs-center xs12 pb-2>
-              <span class="font-italic white--text">Full-Stack Web Developer</span>
+              <span class="font-italic black--text">{{mydesignation}}</span>
+
             </v-flex>
 
 
@@ -100,25 +101,6 @@
 
           </v-layout>
 
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
-          <v-layout pb-5></v-layout>
         </v-card>
 
       </v-flex>
@@ -152,7 +134,7 @@
                   </v-layout>
 
                   <span v-if="education.type==='school'"><i>{{education.board}}</i></span>
-                  <br>
+                  <br v-if="education.type=='school'">
                   <span v-if="education.type!=='school'"><i>{{education.major}}</i></span>
                   <br v-if="education.type!=='school'">
                   <span><i>CGPA/Percentage:</i>{{education.percentage}}</span>
@@ -168,15 +150,16 @@
 
 
         <v-flex xs12>
-          <v-container>
+          <v-container v-if="experience.length>0">
 
+<!--            work experience-->
             <v-layout row wrap>
 
-              <div class="circle">
+              <div  class="circle">
                 <v-icon large class="large text-xs-center white--text">work</v-icon>
               </div>
 
-              <h2 class="ml-3 mt-2 font-weight-bold">WORK EXPERIENCE</h2>
+              <h2  class="ml-3 mt-2 font-weight-bold">WORK EXPERIENCE</h2>
             </v-layout>
             <v-container>
               <ol>
@@ -240,7 +223,7 @@
 
 
         <v-flex xs12>
-          <v-container>
+          <v-container v-if="projects.length>0">
 
             <v-layout row wrap>
 
@@ -292,40 +275,13 @@
 
   export default {
 
-    loading: false,
-    loadingindicator: false,
-    // fetch()
 
-    methods: {
-      settitle(response) {
-        this.title = response.data.title
-      }
-    },
 
-    head() {
-      return {
 
-        title: this.title,
-        meta: [
-          {charset: 'utf-8'},
-          {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-          {hid: 'keywords', name: 'keywords', content: 'vuejs, nuxt, javascript, tutorials, development, software'},
-          {hid: 'description', name: 'description', content: "custom description"}
-        ],
-        link: [
-          {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-          {
-            rel: 'stylesheet',
-            href:
-              'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
-          }
-        ]
-      }
-    },
-    components: {},
     data() {
       return {
         myname:"Shivansh Talwar",
+        mydesignation:"Full-Stack Web Developer",
 
         myimage:"/shiv5.jpg",
         //put your image in static directory and change /shiv5.jpg to your image name
@@ -350,6 +306,7 @@
           {text: 'Certificate In Java Programming'},
           {text: 'Python & its Application with IOT'},
         ],
+        //Please Note:-if you have no work experience then you can leave experience array empty as experience:[],
         experience: [
 
           {
@@ -377,7 +334,7 @@
 
 
         ],
-
+        //Please Note:-if you have no projects then you can leave projects array empty as projects:[],
         projects: [
           {
             title: "Proxychecker",
