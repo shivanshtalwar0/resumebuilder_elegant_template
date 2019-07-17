@@ -10,12 +10,12 @@
 
                 color="grey lighten-4"
               >
-                <img width="200" height="200" src="../assets/shiv5.jpg" alt="avatar"/>
+                <img width="200" height="200" :src="myimage" alt="avatar"/>
               </v-avatar>
             </v-flex>
 
             <v-flex text-xs-center xs12>
-              <h2 class="black--text">Shivansh Talwar</h2>
+              <h2 class="black--text">{{myname}}</h2>
             </v-flex>
             <v-flex text-xs-center xs12 pb-2>
               <span class="font-italic white--text">Full-Stack Web Developer</span>
@@ -70,11 +70,6 @@
 
                     </ul>
 
-                    <!--                   <v-progress-linear-->
-                    <!--                     background-color="blue-grey"-->
-                    <!--                     color="lime"-->
-                    <!--                     :value="element.score"-->
-                    <!--                   ></v-progress-linear>-->
                   </v-flex>
                 </v-layout>
 
@@ -135,45 +130,32 @@
           <v-flex xs12>
             <v-container fluid>
               <v-layout row wrap>
-                <!--                 <v-flex xs1></v-flex>-->
-                <!--                 <v-flex xs1></v-flex>-->
-                <!--                 <v-flex xs1>-->
+
                 <div class="circle">
                   <v-icon large class="large text-xs-center white--text">school</v-icon>
                 </div>
-                <!--                 </v-flex>-->
-                <!--                 <v-flex xs9>-->
+
                 <h2 class="ml-3 mt-2 font-weight-bold">EDUCATION</h2>
 
-                <!--                 </v-flex>-->
+
               </v-layout>
               <v-layout row wrap>
-                <v-flex ma-4 xs12>
+                <v-flex v-for="education in educations" :key="education.institutename" ma-4 xs12>
 
                   <v-layout row wrap>
                     <v-flex xs9>
-                      <h3><b>Greenway Modern School</b></h3>
+                      <h3><b>{{education.institutename}}</b></h3>
                     </v-flex>
                     <v-flex xs3>
-                      <h3><i>2016</i></h3>
+                      <h3><i>{{education.completiontime}}</i></h3>
                     </v-flex>
                   </v-layout>
 
-                  <span><i>CBSE Board</i></span><br>
-                  <span><i>CGPA/Percentage:</i>76%</span>
-                </v-flex>
-
-                <v-flex ma-4 xs12>
-                  <v-layout row wrap>
-                    <v-flex xs9>
-                      <h3><b>Abdul Kalam Technical University,Lucknow</b></h3>
-                    </v-flex>
-                    <v-flex xs3>
-                      <h3><i>2016-2020</i></h3>
-                    </v-flex>
-                  </v-layout>
-                  <span><i>B-Tech in Computer Science</i></span><br>
-                  <span><i>Percentage:</i>70%</span>
+                  <span v-if="education.type==='school'"><i>{{education.board}}</i></span>
+                  <br>
+                  <span v-if="education.type!=='school'"><i>{{education.major}}</i></span>
+                  <br v-if="education.type!=='school'">
+                  <span><i>CGPA/Percentage:</i>{{education.percentage}}</span>
                 </v-flex>
 
 
@@ -189,14 +171,11 @@
           <v-container>
 
             <v-layout row wrap>
-              <!--                 <v-flex xs1></v-flex>-->
-              <!--                 <v-flex xs1></v-flex>-->
-              <!--                 <v-flex xs1>-->
+
               <div class="circle">
                 <v-icon large class="large text-xs-center white--text">work</v-icon>
               </div>
-              <!--                 </v-flex>-->
-              <!--                 <v-flex xs9>-->
+
               <h2 class="ml-3 mt-2 font-weight-bold">WORK EXPERIENCE</h2>
             </v-layout>
             <v-container>
@@ -217,11 +196,11 @@
 
 
                   </v-layout>
-                  <!--                 <v-container>-->
+
                   <ul v-for="(resp,resk) in exp.responsibilities">
                     <li>{{resp}}</li>
                   </ul>
-                  <!--                 </v-container>-->
+
 
                 </li>
               </ol>
@@ -239,14 +218,10 @@
           <v-container>
 
             <v-layout row wrap>
-              <!--                 <v-flex xs1></v-flex>-->
-              <!--                 <v-flex xs1></v-flex>-->
-              <!--                 <v-flex xs1>-->
+
               <div class="circle">
                 <v-icon large class="large text-xs-center white--text">insert_chart</v-icon>
               </div>
-              <!--                 </v-flex>-->
-              <!--                 <v-flex xs9>-->
               <h2 class="ml-3 mt-2 font-weight-bold">TECHNICAL SKILLS</h2>
             </v-layout>
             <v-container>
@@ -268,14 +243,11 @@
           <v-container>
 
             <v-layout row wrap>
-              <!--                 <v-flex xs1></v-flex>-->
-              <!--                 <v-flex xs1></v-flex>-->
-              <!--                 <v-flex xs1>-->
+
               <div class="circle">
                 <v-icon large class="large text-xs-center white--text">assignment_turned_in</v-icon>
               </div>
-              <!--                 </v-flex>-->
-              <!--                 <v-flex xs9>-->
+
               <h2 class="ml-3 mt-2 font-weight-bold">PROJECTS</h2>
             </v-layout>
 
@@ -353,6 +325,26 @@
     components: {},
     data() {
       return {
+        myname:"Shivansh Talwar",
+
+        myimage:"/shiv5.jpg",
+        //put your image in static directory and change /shiv5.jpg to your image name
+        educations:[
+          {institutename:"Greenway Modern School",
+          type:"school",
+            completiontime:"2016",
+            board:"CBSE Board",
+            percentage:"76%"
+          },
+          {institutename:"Abdul Kalam Technical University,Lucknow",
+            type:"college",
+            completiontime:"2016-2020",
+            board:"CBSE Board",
+            percentage:"70%",
+            major:"B-Tech in Computer Science"
+          }
+
+        ],
 
         certifications: [
           {text: 'Certificate In Java Programming'},

@@ -44,7 +44,7 @@
 
                           color="grey lighten-4"
                         >
-                          <img width="200" height="200" src="../../assets/shiv5.jpg" alt="avatar"/>
+                          <img width="200" height="200" src="../../static/shiv5.jpg" alt="avatar"/>
                         </v-avatar>
                       </v-flex>
 
