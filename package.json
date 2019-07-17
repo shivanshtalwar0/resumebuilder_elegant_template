@@ -1,7 +1,7 @@
 {
   "name": "resume_builder",
   "version": "1.0.0",
-  "description": "My stupendous Nuxt.js project",
+  "description": "Elegant template for building your resume",
   "author": "shivansh talwar",
   "private": true,
   "scripts": {
