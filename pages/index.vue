@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="bg">
     <v-layout row wrap>
       <v-flex xs4>
         <v-card width="auto" height="auto" style="height:100vh;background-color:#F5F5F5;">
@@ -502,11 +502,10 @@
 </script>
 <style>
   .bg {
-    background-image: url("../assets/professional-background-png-1.png");
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    /*background-clip: content-box;*/
+    background-image: url(/niet.png);
+    background-position: 99.2% 8px;
+    background-size:10em 10em;
+    background-clip: content-box;
 
 
   }
